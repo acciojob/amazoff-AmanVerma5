@@ -2,10 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 @Repository
 public class OrderRepository {
@@ -90,6 +87,7 @@ public class OrderRepository {
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
+        int latestTime=0;
         if(orderPartnerMap.containsKey(partnerId)){
             for(String currentOrderId : orderPartnerMap.get(partnerId)){
                 if(orderMap.get(currentOrderId).getDeliveryTime()>latestTime){
